@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^26.4.2",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5"
+  },
+  "name": "form-strategy",
+  "version": "1.0.0",
+  "description": "from verification",
+  "main": "lib/form-strategy.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuiMao233/form-strategy.git"
+  },
+  "keywords": [
+    "from"
+  ],
+  "author": "Mr.Mao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TuiMao233/form-strategy/issues"
+  },
+  "homepage": "https://github.com/TuiMao233/form-strategy#readme"
+}
