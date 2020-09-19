@@ -8,7 +8,7 @@
     "@babel/preset-env": "^7.4.5"
   },
   "name": "form-strategy",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "from verification",
   "main": "lib/form-strategy.js",
   "directories": {
