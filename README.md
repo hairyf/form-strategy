@@ -22,7 +22,7 @@ extend("phone", {
   validate(value) {
     return /^(?:(?:\+|00)86)?1[3-9]\d{9}$/.test(value);
   },
-  name: "{__field__}格式不正确",
+  massage: "{__field__}格式不正确",
 });
 const status = validate("phone", "17a3x66a4d91", "手机号");
 // status -> { validate: false, error: "手机号格式不正确" }
@@ -36,7 +36,7 @@ extend("phone", {
   validate(value) {
     return /^(?:(?:\+|00)86)?1[3-9]\d{9}$/.test(value)
   },
-  name: "{__field__}格式不正确"
+  massage: "{__field__}格式不正确"
 })
 Vue.prototype.$validate = validate
 Vue.prototype.$validateAll = validateAll
