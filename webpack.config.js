@@ -7,8 +7,9 @@ module.exports = {
   },
 	// 输出配置
 	output: { 
-    filename: "[name].js",
-		path: resolve(__dirname, 'dist') // 输出文件路径配置
+      filename: "[name].js",
+      path: resolve(__dirname, 'dist'), // 输出文件路径配置
+      libraryTarget: "umd"
     },
     // production 生产环境 / development 开发环境
     mode: 'development',
@@ -28,7 +29,7 @@ module.exports = {
 					{	useBuiltIns: 'usage', // 按需加载
 						corejs: {version: 3}, // 指定core-js版本
 						// 指定从哪个浏览器版本开始做兼容性处理
-  					    targets: {	chrome: '60', firefox: '60', ie: '9', safari: '10', edge: '17' }
+  					    targets: {	chrome: '70', firefox: '60', ie: '9', safari: '10', edge: '17' }
 					}
 			]]},
 	 	}
