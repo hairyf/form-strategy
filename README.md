@@ -6,7 +6,7 @@
 
 支持批量，单一验证校验，提示字符串使用`{__field__}`字符串表达式从而使代码复用更加强大。
 
-如果使用`TypeScript`，建议使用`class-from-strategy`版本：https://github.com/TuiMao233/form-strategy/blob/master/docs/class-from-strategy.md
+如果使用`TypeScript`，建议使用`create-from-strategy`：https://github.com/TuiMao233/form-strategy/blob/master/docs/create-from-strategy.md
 
 # 具体使用
 

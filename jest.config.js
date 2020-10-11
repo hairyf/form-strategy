@@ -2,6 +2,13 @@
 // https://jestjs.io/docs/en/configuration.html
 
 module.exports = {
+  roots: [
+    "<rootDir>/test"
+  ],
+  // testRegex: 'test/(.+)\\.test\\.(jsx?|tsx?)$',
+  transform: {
+    "^.+\\.tsx?$": "ts-jest"
+  },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 

@@ -1,5 +1,7 @@
+import { ValidateOptions, ValidateContainerItem } from "../types"
+
 // 验证规则容器
-const validateContainer = {
+const validateContainer: ValidateOptions = {
   empty: {
     validate(value) {
       return value.length > 0
@@ -16,11 +18,12 @@ const validateContainer = {
 }
 
 // 添加验证规则函数
-export const extend = (type, options) => {
-  validateContainer[type] = options
+export const extend = (type: string, option: ValidateContainerItem) => {
+  validateContainer[type] = option
 }
+
 // 单规则验证
-export const validate = (type, value, name, params) => {
+export const validate = (type: string, value: any, name?: string, params?: any) => {
   const validateMethod = validateContainer[type]
   if (!validateMethod) {
     return {
@@ -28,7 +31,7 @@ export const validate = (type, value, name, params) => {
       error: `不存在 ${type} 规则验证, 请手动添加`
     }
   }
-  if (typeof validateMethod.message === "function"){
+  if (typeof validateMethod.message === "function") {
     validateMethod.message = validateMethod.message(params)
   }
   const replaceName = name || validateMethod.name || type
@@ -39,18 +42,21 @@ export const validate = (type, value, name, params) => {
     error: validateResult ? "" : errorMsg
   }
 }
-// 多规则验证
-export const validateAll = (...validatesArgs) => {
-  const findIndex = validatesArgs.findIndex(validatesItem => {
+
+// 多验证方法
+export const validateAll = (...args: Array<[string, any, string?, any?]>) => {
+  const findIndex = args.findIndex(validatesItem => {
     const [type, value] = validatesItem
     const validateMethod = validateContainer[type]
+    // 不存在校验方法
     if (!validateMethod) {
       return true
     }
     const validateResult = validateMethod.validate(value)
     return !validateResult
   })
-  const validatesItem = validatesArgs[findIndex]
+  const validatesItem = args[findIndex]
+  // 未找到则代表校验通过
   if (!validatesItem) {
     return {
       validate: true,
@@ -58,13 +64,5 @@ export const validateAll = (...validatesArgs) => {
     }
   }
   const [type, value, name, params] = validatesItem
-  return {
-    ...validate(type, value, name, params)
-  }
-}
-
-export default {
-  extend,
-  validate,
-  validateAll
+  return validate(type, value, name, params)
 }

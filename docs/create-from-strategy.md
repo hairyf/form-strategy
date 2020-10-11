@@ -1,8 +1,8 @@
-# class-form-strategy 类表单策略验证
+# class-form-strategy 创建表单策略验证
 
 [![NPM version](https://img.shields.io/npm/v/form-strategy.svg)](https://www.npmjs.com/package/form-strategy)
 
-类表单验证跟默认表单验证的使用方法类似，只是将规则内置设置的位置放到了`FormStrategy`类中。利用`TypeScript`的泛型，可以为规则提供良好的类型推测。
+创建表单验证跟默认表单验证的使用方法类似，只是将规则内置设置的位置放到了`FormStrategy`类中。利用`TypeScript`的泛型，可以为规则提供良好的类型推测。
 
 # 具体使用
 
@@ -15,8 +15,8 @@ npm install form-strategy --save
 创建验证容器
 
 ~~~js
-import FormStrategy from "form-strategy/dist/class"
-const { validate, validateAll } = new FormStrategy({
+import { createFromStrategy } from "form-strategy"
+const { validate, validateAll } = createFromStrategy({
   // 这里放置规则容器.... key值对应规则名称, 参数则相同
   max: {
     validate(value, params) {
