@@ -6,7 +6,9 @@
 
 支持批量，单一验证校验，提示字符串使用`{__field__}`字符串表达式从而使代码复用更加强大。
 
-如果使用`TypeScript`，建议使用`create-from-strategy`：https://github.com/TuiMao233/form-strategy/blob/master/docs/create-from-strategy.md
+如果使用`TypeScript`，建议使用[create-from-strategy](https://github.com/TuiMao233/form-strategy/blob/master/docs/create-from-strategy.md)
+
+form-strategy 内置了大量规则，但默认只携带了`empty(非空字符串)`，`email(邮箱校验)`两个验证。如需使用其他内置规则，则需要动态引入。具体查看规则引入说明：[rules-validate](https://github.com/TuiMao233/form-strategy/blob/master/docs/rules-validate.md)
 
 # 具体使用
 
