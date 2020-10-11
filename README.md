@@ -18,7 +18,7 @@ npm install form-strategy --save
 进行引入使用，如果使用Vue，可以在main.js中挂载到Vue.prototype中进行使用。
 
 ~~~js
-import { validate, validateAll, extend } from "../lib/form-strategy";
+import { validate, validateAll, extend } from "form-strategy";
 // 添加手机校验规则
 extend("phone", {
   validate(value) {
@@ -33,7 +33,7 @@ const status = validate("phone", "17a3x66a4d91", "手机号");
 ~~~js
 // 在vue中使用
 import Vue from "vue"
-import { validate, validateAll, extend } from "../lib/form-strategy"
+import { validate, validateAll, extend } from "form-strategy"
 extend("phone", {
   validate(value) {
     return /^(?:(?:\+|00)86)?1[3-9]\d{9}$/.test(value)

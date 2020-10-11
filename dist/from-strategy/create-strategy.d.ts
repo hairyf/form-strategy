@@ -1,4 +1,4 @@
-import { ValidateOptions } from "../types";
+import { ValidateOptions } from "../from-types";
 declare const _default: <T extends ValidateOptions>(validateContainer: T) => {
     validate: (type: "empty" | "email" | keyof T, value: any, name?: string | undefined, params?: any) => {
         validate: boolean;

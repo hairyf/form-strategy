@@ -1,4 +1,4 @@
-import { ValidateContainerItem } from "../types";
+import { ValidateContainerItem } from "../from-types";
 export declare const extend: (type: string, option: ValidateContainerItem) => void;
 export declare const validate: (type: string, value: any, name?: string | undefined, params?: any) => {
     validate: boolean;

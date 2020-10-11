@@ -16,7 +16,7 @@ const { validate, validateAll } = createFromStrategy({
     name: "手机号"
   }
 })
-describe("class-strategy", () => {
+describe("create-strategy", () => {
   test("单次验证成功", () => {
     const status = validate("email", "9561416545@qq.com")
     expect(status).toEqual({

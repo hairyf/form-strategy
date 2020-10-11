@@ -1,4 +1,4 @@
-import { ValidateOptions, ValidateContainerItem } from "../types"
+import { ValidateOptions, ValidateContainerItem } from "../from-types"
 
 // 验证规则容器
 const validateContainer: ValidateOptions = {

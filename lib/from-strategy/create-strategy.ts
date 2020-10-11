@@ -1,4 +1,4 @@
-import { ValidateOptions } from "../types"
+import { ValidateOptions } from "../from-types"
 
 export default <T extends ValidateOptions>(validateContainer: T) => {
   const newValidateContainer: ValidateOptions = {
