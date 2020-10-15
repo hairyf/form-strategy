@@ -1,7 +1,7 @@
 import { ValidateOptions, ValidateContainerItem } from "../from-types"
 
 // 验证规则容器
-const validateContainer: ValidateOptions = {
+const validateContainer: ValidateOptions<string> = {
   empty: {
     validate(value) {
       return value.length > 0

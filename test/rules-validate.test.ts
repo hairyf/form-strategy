@@ -1,10 +1,7 @@
 import { createFromStrategy } from "../lib"
 import * as rules from "../lib/rules"
 
-const { validate } = createFromStrategy({
-  ...rules
-})
-
+const { validate } = createFromStrategy(rules)
 describe("rules-validate", () => {
   test("数字/货币金额(负数, 千分位)校验失败", () => {
     const status = validate("priceNegative", "asdas")

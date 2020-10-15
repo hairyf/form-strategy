@@ -8,8 +8,9 @@ export interface ValidateContainerItem {
   name?: string;
 }
 
-export interface ValidateOptions {
-  [key: string]: ValidateContainerItem
+/** 校验容器配置 */
+export type ValidateOptions<K extends string | number | symbol> = {
+  [P in K]: ValidateContainerItem
 }
 
 /** 校验规则结果 */

@@ -31,6 +31,9 @@ export { default as english } from "./english";
 /** 中文校验(value: string); name: 无; message: {__field__}不是中文/汉字 */
 export { default as chinese } from "./chinese";
 
+/** 中文姓名校验(value: string); name: 姓名; message: {__field__}不符合中文姓名格式 */
+export { default as chineseName } from "./chinese-name";
+
 /** 银行卡号校验(value: string); name: 银行卡号; message: {__field__}格式不正确 */
 export { default as bankId } from "./bank-id";
 

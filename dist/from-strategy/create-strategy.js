@@ -1,16 +1,8 @@
-export default (validateContainer) => {
-    const newValidateContainer = Object.assign({ empty: {
-            validate(value) {
-                return value.length > 0;
-            },
-            message: "{__field__}不能为空"
-        }, email: {
-            validate(value) {
-                return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
-            },
-            message: "{__field__}格式不正确",
-            name: "邮箱"
-        } }, validateContainer);
+import email from "../rules/email";
+import empty from "../rules/empty";
+export default (validateContainer = {}) => {
+    // 合并默认配置
+    const newValidateContainer = Object.assign({ empty, email }, validateContainer);
     // 单验证方法
     const validate = (type, value, name, params) => {
         const validateMethod = newValidateContainer[type];
@@ -34,26 +26,22 @@ export default (validateContainer) => {
     };
     // 多验证方法
     const validateAll = (...args) => {
-        const findIndex = args.findIndex(validatesItem => {
-            const [type, value] = validatesItem;
-            const validateMethod = newValidateContainer[type];
-            // 不存在校验方法
-            if (!validateMethod) {
-                return true;
+        // 定义验证返回值
+        let validatesResult = undefined;
+        // 遍历验证, 当验证失败时跳出验证
+        for (let i = 0; i < args.length; i++) {
+            const [type, value, name, params] = args[i];
+            const validateStatus = validate(type, value, name, params);
+            if (!validateStatus.validate) {
+                validatesResult = validateStatus;
+                continue;
             }
-            const validateResult = validateMethod.validate(value);
-            return !validateResult;
-        });
-        const validatesItem = args[findIndex];
-        // 未找到则代表校验通过
-        if (!validatesItem) {
-            return {
-                validate: true,
-                error: ""
-            };
         }
-        const [type, value, name, params] = validatesItem;
-        return validate(type, value, name, params);
+        // 未找到则代表校验通过
+        if (!validatesResult) {
+            validatesResult = { validate: true, error: "" };
+        }
+        return validatesResult;
     };
     return {
         validate,
