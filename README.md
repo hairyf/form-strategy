@@ -1,4 +1,4 @@
-# form-strategy 表单策略验证
+## form-strategy 表单策略验证简述
 
 [![NPM version](https://img.shields.io/npm/v/form-strategy.svg)](https://www.npmjs.com/package/form-strategy)
 
@@ -10,7 +10,7 @@
 
 form-strategy 内置了大量规则，但默认只携带了`empty(非空字符串)`，`email(邮箱校验)`两个验证。如需使用其他内置规则，则需要动态引入。具体查看规则引入说明：[rules-validate](https://github.com/TuiMao233/form-strategy/blob/master/docs/rules-validate.md)
 
-# 具体使用
+## 具体使用
 
 首先，先将该库进行引入。
 ~~~npm
@@ -53,7 +53,7 @@ Vue.prototype.$validateAll = validateAll
 }
 ~~~
 
-## 所有静态方法
+### 所有静态方法
 
 ~~~js
 formStrategy.extend(type, options)
@@ -61,7 +61,7 @@ formStrategy.validate(type, value[, name[, params]])
 formStrategy.validateAll(...args[type, value[, name[, params]]])
 ~~~
 
-## 单次校验表单
+### 单次校验表单
 
 在使用中，validateContainer(策略容器中)，默认自带了`empty(非空字符串)`，`email(邮箱校验)`两个验证。在以下例子中，将使用自带的校验规则`empty / email`进行演示，用户可自行进行添加校验规则。
 
@@ -87,7 +87,7 @@ const status = validate("email", "9561416545com")
 }
 ~~~
 
-## 添加自定义校验规则
+### 添加自定义校验规则
 
 ~~~js
 import { validate, extend } from "../lib/form-strategy"
@@ -114,7 +114,7 @@ const status = validate("phone", "173a11x62579", "1号手机号")
 }
 ~~~
 
-## 多次校验表单
+### 多次校验表单
 
 ~~~js
 import { validateAll } from "../lib/form-strategy"
