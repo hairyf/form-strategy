@@ -33,6 +33,7 @@ export default <T extends ValidateOptions<string> = {}>(validateContainer = {} a
   }
   // 多验证方法
   const validateAll = (...args: Array<[Types, any, string?, any?]>) => {
+    args = args.reverse();
     // 定义验证返回值
     let validatesResult:ValidateResult | undefined =  undefined
     // 遍历验证, 当验证失败时跳出验证
