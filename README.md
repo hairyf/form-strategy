@@ -10,14 +10,14 @@
 
 form-strategy 内置了大量规则，但默认只携带了`empty(非空字符串)`，`email(邮箱校验)`两个验证。如需使用其他内置规则，则需要动态引入。具体查看规则引入说明：[rules-validate](https://github.com/TuiMao233/form-strategy/blob/master/docs/rules-validate.md)
 
-# 具体使用
+## 具体使用
 
 首先，先将该库进行引入。
 ~~~npm
 npm install form-strategy --save
 ~~~
 
-进行引入使用，如果使用Vue，可以在main.js中挂载到Vue.prototype中进行使用。
+进行引入并使用。
 
 ~~~js
 import { validate, validateAll, extend } from "form-strategy";
@@ -30,27 +30,6 @@ extend("phone", {
 });
 const status = validate("phone", "17a3x66a4d91", "手机号");
 // status -> { validate: false, error: "手机号格式不正确" }
-~~~
-
-~~~js
-// 在vue中使用
-import Vue from "vue"
-import { validate, validateAll, extend } from "form-strategy"
-extend("phone", {
-  validate(value) {
-    return /^(?:(?:\+|00)86)?1[3-9]\d{9}$/.test(value)
-  },
-  massage: "{__field__}格式不正确"
-})
-Vue.prototype.$validate = validate
-Vue.prototype.$validateAll = validateAll
-// 在组件中使用...
-{
-  mounted() {
-    const status = this.$validate("phone", "17a3x66a4d91", "手机号")
-    // status -> { validate: false, error: "手机号格式不正确" }
-  }
-}
 ~~~
 
 ## 所有静态方法
