@@ -7,3 +7,4 @@ declare const errorHandleModular: {
     setErrorHandle: (callBack: SetErrorHandleCallBackType) => void;
 };
 export default errorHandleModular;
+export { errorHandleModular };

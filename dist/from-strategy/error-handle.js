@@ -10,3 +10,4 @@ const errorHandleModular = new class {
     }
 };
 export default errorHandleModular;
+export { errorHandleModular };
