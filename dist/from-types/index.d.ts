@@ -13,6 +13,8 @@ export declare type ValidateOptions<K extends string | number | symbol> = {
 };
 /** 校验规则结果 */
 export interface ValidateResult {
+    /** 当前校验索引 */
+    index?: number;
     /** 校验是否成功 */
     validate: boolean;
     /** 错误信息 */

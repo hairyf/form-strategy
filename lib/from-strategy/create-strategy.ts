@@ -8,7 +8,7 @@ export default <T extends ValidateOptions<string> = {}>(validateContainer = {} a
   // 合并默认配置
   const newValidateContainer = Object.assign(
     { empty, email },
-     validateContainer
+    validateContainer
   );
   // 单验证方法
   const validate = (type: Types, value: any, name?: string, params?: any) => {
@@ -35,13 +35,14 @@ export default <T extends ValidateOptions<string> = {}>(validateContainer = {} a
   const validateAll = (...args: Array<[Types, any, string?, any?]>) => {
     args = args.reverse();
     // 定义验证返回值
-    let validatesResult:ValidateResult | undefined =  undefined
+    let validatesResult: ValidateResult | undefined = undefined
     // 遍历验证, 当验证失败时跳出验证
-    for(let i = 0; i < args.length; i++) {
+    for (let i = 0; i < args.length; i++) {
       const [type, value, name, params] = args[i];
       const validateStatus = validate(type, value, name, params);
       if (!validateStatus.validate) {
         validatesResult = validateStatus;
+        validatesResult.index = i
         continue;
       }
     }

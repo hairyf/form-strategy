@@ -35,6 +35,7 @@ export default (validateContainer = {}) => {
             const validateStatus = validate(type, value, name, params);
             if (!validateStatus.validate) {
                 validatesResult = validateStatus;
+                validatesResult.index = i;
                 continue;
             }
         }
