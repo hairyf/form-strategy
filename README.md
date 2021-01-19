@@ -17,7 +17,7 @@ form-strategy 内置了大量规则，但默认只携带了`empty(非空字符�
 npm install form-strategy --save
 ~~~
 
-进行引入使用，如果使用Vue，可以在main.js中挂载到Vue.prototype中进行使用。
+进行引入并使用。
 
 ~~~js
 import { validate, validateAll, extend } from "form-strategy";
@@ -32,28 +32,7 @@ const status = validate("phone", "17a3x66a4d91", "手机号");
 // status -> { validate: false, error: "手机号格式不正确" }
 ~~~
 
-~~~js
-// 在vue中使用
-import Vue from "vue"
-import { validate, validateAll, extend } from "form-strategy"
-extend("phone", {
-  validate(value) {
-    return /^(?:(?:\+|00)86)?1[3-9]\d{9}$/.test(value)
-  },
-  massage: "{__field__}格式不正确"
-})
-Vue.prototype.$validate = validate
-Vue.prototype.$validateAll = validateAll
-// 在组件中使用...
-{
-  mounted() {
-    const status = this.$validate("phone", "17a3x66a4d91", "手机号")
-    // status -> { validate: false, error: "手机号格式不正确" }
-  }
-}
-~~~
-
-### 所有静态方法
+## 所有静态方法
 
 ~~~js
 formStrategy.extend(type, options)

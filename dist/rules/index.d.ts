@@ -36,5 +36,9 @@ export { default as float } from "./float";
 export { default as number } from "./number";
 /** 数字/货币金额(value: string); name: 该数值; message: {__field__}不是正数或不符合数字/货币金额格式 */
 export { default as price } from "./price";
-/** 数字/货币金额(负数, 千分位)(value: string); name: 该数; message: {__field__}不符合数字/货币金额格式 */
+/** 数字/货币金额(负数, 千分位)(value: string); name: 该数值; message: {__field__}不符合数字/货币金额格式 */
 export { default as priceNegative } from "./price-negative";
+/** 最低数值(value: number, params: number); name: 该数值; message: {__field__}未达到${params}个数量 */
+export { default as countMin } from "./count-min";
+/** 最高数值(value: number, params: number); name: 该数值; message: {__field__}超出了${params}个数量 */
+export { default as countMax } from "./count-min";
