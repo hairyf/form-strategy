@@ -1,3 +1,4 @@
+import errorHandleModular from "./error-handle";
 import email from "../rules/email";
 import empty from "../rules/empty";
 export default (validateContainer = {}) => {
@@ -36,6 +37,7 @@ export default (validateContainer = {}) => {
             if (!validateStatus.validate) {
                 validatesResult = validateStatus;
                 validatesResult.index = i;
+                errorHandleModular.errorHandle(validatesResult, args[i]);
                 continue;
             }
         }
@@ -45,8 +47,9 @@ export default (validateContainer = {}) => {
         }
         return validatesResult;
     };
-    return {
+    const plotForm = {
         validate,
-        validateAll
+        validateAll,
     };
+    return plotForm;
 };

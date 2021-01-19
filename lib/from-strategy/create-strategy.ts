@@ -1,4 +1,5 @@
 import { ValidateOptions, ValidateResult } from "../from-types"
+import errorHandleModular, { SetErrorHandleCallBackType } from "./error-handle";
 import email from "../rules/email";
 import empty from "../rules/empty";
 
@@ -10,8 +11,9 @@ export default <T extends ValidateOptions<string> = {}>(validateContainer = {} a
     { empty, email },
     validateContainer
   );
+
   // 单验证方法
-  const validate = (type: Types, value: any, name?: string, params?: any) => {
+  const validate = (type: Types, value: any, name?: string, params?: any,) => {
     const validateMethod = newValidateContainer[type]
     // 不存在校验方法
     if (!validateMethod) {
@@ -43,6 +45,7 @@ export default <T extends ValidateOptions<string> = {}>(validateContainer = {} a
       if (!validateStatus.validate) {
         validatesResult = validateStatus;
         validatesResult.index = i
+        errorHandleModular.errorHandle(validatesResult, args[i])
         continue;
       }
     }
@@ -52,9 +55,9 @@ export default <T extends ValidateOptions<string> = {}>(validateContainer = {} a
     }
     return validatesResult
   }
-
-  return {
+  const plotForm = {
     validate,
-    validateAll
+    validateAll,
   }
+  return plotForm
 } 

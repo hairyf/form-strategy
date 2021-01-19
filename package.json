@@ -19,7 +19,7 @@
     "lib"
   ],
   "name": "form-strategy",
-  "version": "1.2.5",
+  "version": "1.2.56",
   "description": "from verification",
   "main": "dist",
   "directories": {
