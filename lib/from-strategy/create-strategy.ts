@@ -1,5 +1,13 @@
+/*
+ * @Author: Mr.Mao
+ * @Date: 2021-01-07 10:12:16
+ * @LastEditTime: 2021-04-29 11:24:13
+ * @Description: 
+ * @LastEditors: Mr.Mao
+ * @autograph: 任何一个傻子都能写出让电脑能懂的代码，而只有好的程序员可以写出让人能看懂的代码
+ */
 import { ValidateOptions, ValidateResult } from "../from-types"
-import errorHandleModular, { SetErrorHandleCallBackType } from "./error-handle";
+export type SetErrorHandleCallBackType = (resulrt:ValidateResult, params: any) => void
 import email from "../rules/email";
 import empty from "../rules/empty";
 
@@ -11,7 +19,9 @@ export default <T extends ValidateOptions<string> = {}>(validateContainer = {} a
     { empty, email },
     validateContainer
   );
-
+  const errorHandleModular = {
+    errorHandle: (() => {}) as SetErrorHandleCallBackType
+  }
   // 单验证方法
   const validate = (type: Types, value: any, name?: string, params?: any,) => {
     const validateMethod = newValidateContainer[type]
@@ -58,6 +68,7 @@ export default <T extends ValidateOptions<string> = {}>(validateContainer = {} a
   const plotForm = {
     validate,
     validateAll,
+    setErrorHandle:(callBack: SetErrorHandleCallBackType) => errorHandleModular.errorHandle = callBack
   }
   return plotForm
 } 

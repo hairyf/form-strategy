@@ -1,9 +1,11 @@
-import errorHandleModular from "./error-handle";
 import email from "../rules/email";
 import empty from "../rules/empty";
 export default (validateContainer = {}) => {
     // 合并默认配置
     const newValidateContainer = Object.assign({ empty, email }, validateContainer);
+    const errorHandleModular = {
+        errorHandle: (() => { })
+    };
     // 单验证方法
     const validate = (type, value, name, params) => {
         const validateMethod = newValidateContainer[type];
@@ -50,6 +52,7 @@ export default (validateContainer = {}) => {
     const plotForm = {
         validate,
         validateAll,
+        setErrorHandle: (callBack) => errorHandleModular.errorHandle = callBack
     };
     return plotForm;
 };
